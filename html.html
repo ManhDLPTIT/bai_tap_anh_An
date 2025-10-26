@@ -1,0 +1,87 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+  </head>
+  <body>
+    <div>
+      <label>Name</label>
+      <br />
+
+      <input type="" placeholder="Input Name" id="idName" />
+      <br />
+      <label> Email</label> <br />
+      <input type="" placeholder="Email" id="idEmail" />
+      <br />
+
+      <label>Password</label>
+      <br />
+      <input type="password" placeholder="Password" id="idPassword" />
+      <br />
+      <label>Confirm Password</label>
+      <br />
+      <input
+        type="password"
+        placeholder="Check password"
+        id="idCheckPassword"
+      />
+      <br />
+
+      <button onclick="submitForm()">
+        <label>Sign up </label>
+      </button>
+    </div>
+
+    <script>
+      // Gợi ý: Object.keys, forEach, nối string trong js
+
+      const registerData = {
+        name: "222",
+        email: "",
+        password: "",
+        confirmPassword: "",
+      };
+
+      const errors = {
+        errorsName: "",
+        errorsEmail: "",
+        errorsPassword: "",
+        errorsConfirmPassword: "",
+      };
+
+      function submitForm() {
+        registerData.name = document.getElementById("idName").value;
+        registerData.email = document.getElementById("idEmail").value;
+        registerData.password = document.getElementById("idPassword").value;
+        registerData.confirmPassword =
+          document.getElementById("idCheckPassword").value;
+        let message = "";
+        Object.keys(errors).forEach((key) => {
+          if (
+            registerData.name.length < 2 ||
+            !registerData.email.includes("@") ||
+            registerData.password.length < 8 ||
+            registerData.password !== registerData.confirmPassword
+          ) {
+            errors.errorsName = "Tên phải có trên 2 ký tự";
+            message += errors.errorsName + "\n";
+            errors.errorsEmail = "Phải có ký tự @";
+            message += errors.errorsEmail + "\n";
+            errors.errorsPassword = "Phải có ít nhất 8 ký tự";
+            message += errors.errorsPassword + "\n";
+            errors.errorsConfirmPassword =
+              "Mật khẩu và xác nhận mật khẩu phải trùng nhau";
+            message += errors.errorsConfirmPassword + "\n";
+          }
+        });
+        if (message === "") {
+          console.log(registerData);
+        } else {
+          alert(message);
+        }
+      }
+    </script>
+  </body>
+</html>
