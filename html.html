@@ -52,28 +52,31 @@
       };
 
       function submitForm() {
-        registerData.name = document.getElementById("idName").value;
+        registerData.name = document.getElementById("idName").value.trim();
         registerData.email = document.getElementById("idEmail").value;
         registerData.password = document.getElementById("idPassword").value;
         registerData.confirmPassword =
           document.getElementById("idCheckPassword").value;
         let message = "";
         Object.keys(errors).forEach((key) => {
+          if (key === "errorsName" && registerData.name.length < 2) {
+            errors[key] = "Tên phải có trên 2 ký tự";
+            message += errors[key] + "\n";
+          }
+          if (key === "errorsEmail" && !registerData.email.includes("@")) {
+            errors[key] = "Phải có ký tự @";
+            message += errors[key] + "\n";
+          }
+          if (key === "errorsPassword" && registerData.password.length < 8) {
+            errors[key] = "Phải có ít nhất 8 ký tự";
+            message += errors[key] + "\n";
+          }
           if (
-            registerData.name.length < 2 ||
-            !registerData.email.includes("@") ||
-            registerData.password.length < 8 ||
+            key === "errorsConfirmPassword" &&
             registerData.password !== registerData.confirmPassword
           ) {
-            errors.errorsName = "Tên phải có trên 2 ký tự";
-            message += errors.errorsName + "\n";
-            errors.errorsEmail = "Phải có ký tự @";
-            message += errors.errorsEmail + "\n";
-            errors.errorsPassword = "Phải có ít nhất 8 ký tự";
-            message += errors.errorsPassword + "\n";
-            errors.errorsConfirmPassword =
-              "Mật khẩu và xác nhận mật khẩu phải trùng nhau";
-            message += errors.errorsConfirmPassword + "\n";
+            errors[key] = "Mật khẩu và xác nhận mật khẩu phải trùng nhau";
+            message += errors[key] + "\n";
           }
         });
         if (message === "") {
