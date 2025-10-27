@@ -1,0 +1,105 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Máy tính sơ cấp</title>
+  </head>
+  <body>
+    <div>
+      <h1>máy tính sơ cấp cộng trừ nhân chia 2 số</h1>
+      <input type="text" placeholder="input" id="inputCalculator" />
+
+      <label for="number"></label><br />
+
+      <button onclick="number1()">1</button>
+      <button onclick="number2()">2</button>
+      <button onclick="number3()">3</button>
+      <button onclick="number4()">4</button><br />
+      <button onclick="number5()">5</button>
+      <button onclick="number6()">6</button>
+      <button onclick="number7()">7</button>
+      <button onclick="number8()">8</button><br />
+      <button onclick="number9()">9</button>
+      <button onclick="number0()">0</button>
+      <button onclick="answerNumber()">answer</button><br />
+      <button onclick="plusSign()">+</button>
+      <button onclick="minusSign()">-</button>
+      <button onclick="multiplicationSign()">*</button>
+      <button onclick="divisionSign()">/</button><br />
+    </div>
+
+    <script>
+      let input = document.getElementById("inputCalculator");
+      function number0() {
+        input.value += "0";
+      }
+      function number1() {
+        input.value += "1";
+      }
+      function number2() {
+        input.value += "2";
+      }
+      function number3() {
+        input.value += "3";
+      }
+      function number4() {
+        input.value += "4";
+      }
+      function number5() {
+        input.value += "5";
+      }
+      function number6() {
+        input.value += "6";
+      }
+      function number7() {
+        input.value += "7";
+      }
+      function number8() {
+        input.value += "8";
+      }
+      function number9() {
+        input.value += "9";
+      }
+
+      function plusSign() {
+        input.value += "+";
+      }
+      function minusSign() {
+        input.value += "-";
+      }
+      function multiplicationSign() {
+        input.value += "*";
+      }
+      function divisionSign() {
+        input.value += "/";
+      }
+      function answerNumber() {
+        let result1 = input.value.split("+");
+        let result2 = input.value.split("-");
+        let result3 = input.value.split("*");
+        let result4 = input.value.split("/");
+        let result1_1 = Number(result1[0]);
+        let result1_2 = Number(result1[1]);
+        let result2_1 = Number(result2[0]);
+        let result2_2 = Number(result2[1]);
+        let result3_1 = Number(result3[0]);
+        let result3_2 = Number(result3[1]);
+        let result4_1 = Number(result4[0]);
+        let result4_2 = Number(result4[1]);
+
+        if (input.value.includes("+")) {
+          input.value = result1_1 + result1_2;
+        } else if (input.value.includes("-")) {
+          input.value = result2_1 - result2_2;
+        } else if (input.value.includes("*")) {
+          input.value = result3_1 * result3_2;
+        } else if (input.value.includes("/")) {
+          input.value = result4_1 / result4_2;
+        }
+
+        console.log(input.value);
+      }
+    </script>
+  </body>
+</html>
