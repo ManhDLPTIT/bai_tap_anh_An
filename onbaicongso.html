@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Tăng giảm số tương ứng</title>
+  </head>
+  <body>
+    <h1>Viết một số bất kỳ, hãy tăng giảm số đó 1 đơn vị</h1>
+
+    <div>
+      <label>increase or decrease</label> <br />
+      <input type="number" placeholder="Nhập số bất kỳ" id="inputNumber" />
+
+      <button onClick="increaseNumber()">+</button>
+      <button onClick="decreaseNumber()">-</button>
+    </div>
+    <script>
+      function increaseNumber() {
+        let numberOf = Number(document.getElementById("inputNumber").value);
+        numberOf += 1;
+        document.getElementById("inputNumber").value = numberOf;
+      }
+      function decreaseNumber() {
+        let numberOf = Number(document.getElementById("inputNumber").value);
+        numberOf -= 1;
+        document.getElementById("inputNumber").value = numberOf;
+      }
+    </script>
+  </body>
+</html>
